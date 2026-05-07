@@ -13,7 +13,6 @@ A premium, web-based visualization dashboard for clinical methylation analysis, 
 - **Dynamic CRUD Operations**: Manually add, edit, or remove loci for clinical reporting.
 - **Separate Sample Reports**: Automatically generates independent HTML reports for each sample in a run.
 - **Performance Optimized**: Lazy-loading IGV viewer and instructions to ensure rapid initial dashboard loading.
-- **Each sample report**: Individual sample report html, avoiding cluttering of multiple sample data in one html page.
 
 
 ## 🚀 Quick Start
