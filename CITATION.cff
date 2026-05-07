@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+  - family-names: "Das"
+    given-names: "Jyotirmoy"
+    orcid: https://orcid.org/0000-0002-5649-4658
+title: "gms-nallo-methylation-dashboard"
+version: 0.2.3
+identifiers:
+  - type: doi
+    value: 00.0000/zenodo.0000000
+date-released: "2026-05-07"

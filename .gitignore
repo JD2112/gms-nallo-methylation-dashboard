@@ -1,0 +1,13 @@
+# Ignore unnecessary files
+*.log
+*.tmp
+*.DS_Store
+__pycache__/
+.bfxpm/
+data/
+results/
+intermediate/
+scratch/
+doc/
+notebooks/
+logs/
