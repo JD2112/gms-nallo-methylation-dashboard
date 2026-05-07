@@ -25,7 +25,7 @@ A premium, web-based visualization dashboard for clinical methylation analysis, 
 ### 2. Clone the git repository
 
 ```bash
-git clone <url>
+git clone https://github.com/JD2112/gms-nallo-methylation-dashboard.git
 cd gms-nallo-methylation-dashboard
 ```
 
