@@ -1,7 +1,7 @@
 """
 Author: Jyotirmoy Das
 Maintainer: Bioinformatics Core Facility and Clinical Genomics Linkoping
-Version: 0.2.3
+Version: 0.2.4
 Purpose: methylation dashboard data injection from gms-nallo result.
 """
 
@@ -160,6 +160,11 @@ def main():
         epilog="""
 Example Usage:
   python3 nallo_methylation_manager.py --results ./results_260409 --template dashboard-template.html --output My_Audit_Report.html
+  python3 methylation_dashboard/gms-nallo-methylation-dashboard/scripts/nallo_methylation_manager.py \
+  --results GOS \
+  --template methylation_dashboard/gms-nallo-methylation-dashboard/templates/dashboard-template.html \
+  --output GOS/reports/
+
         """
     )
     
@@ -204,45 +209,34 @@ Example Usage:
         if not base_dir.exists():
             continue
             
-        # Check subdirectories (original logic)
+        # Check subdirectories
         for entry in base_dir.iterdir():
             if entry.is_dir():
-                sid = entry.name
-                if sid in sample_data or sid in ["tables", "figures", "reports", "methylation"]: 
+                if entry.name in ["tables", "figures", "reports", "methylation"]: 
                     continue
                 
-                target_file = None
-                candidates = [
-                    entry / f"{sid}_methbat_profile.tsv",
-                    entry / f"{sid}.methbat_mod1.csv",
-                    entry / f"{sid}_methbat_profile.csv"
-                ]
-                for c in candidates:
-                    if c.exists():
-                        target_file = c
-                        break
-                if not target_file:
-                    for f in entry.glob("*.methbat*"):
-                        if f.suffix in ['.csv', '.tsv']:
-                            target_file = f
-                            break
-                if target_file:
-                    print(f" [+] Found Sample Profile: {target_file.name} in {entry.name}")
-                    rows = parse_methbat_tsv(target_file)
-                    if rows:
-                        sample_data[sid] = rows
-                        sample_stats[sid] = calculate_stats(rows, sid)
+                for f in entry.iterdir():
+                    if f.is_file() and f.suffix in ['.csv', '.tsv']:
+                        # Only match if name contains 'methbat', 'profile', or 'vs'
+                        if any(k in f.name.lower() for k in ['methbat', 'profile', 'vs']):
+                            report_id = f.stem
+                            if report_id not in sample_data:
+                                print(f" [+] Found Sample Profile: {f.name} in {entry.name}")
+                                rows = parse_methbat_tsv(f)
+                                if rows:
+                                    sample_data[report_id] = rows
+                                    sample_stats[report_id] = calculate_stats(rows, report_id)
             
             # Also check files directly in base_dir if they match the pattern
-            elif entry.is_file() and (".methbat" in entry.name):
-                # Try to extract SID from filename
-                sid = entry.name.split('.')[0].split('_')[0]
-                if sid not in sample_data:
-                    print(f" [+] Found Sample Profile File: {entry.name}")
-                    rows = parse_methbat_tsv(entry)
-                    if rows:
-                        sample_data[sid] = rows
-                        sample_stats[sid] = calculate_stats(rows, sid)
+            elif entry.is_file() and entry.suffix in ['.csv', '.tsv']:
+                if any(k in entry.name.lower() for k in ['methbat', 'profile', 'vs']):
+                    report_id = entry.stem
+                    if report_id not in sample_data:
+                        print(f" [+] Found Sample Profile File: {entry.name}")
+                        rows = parse_methbat_tsv(entry)
+                        if rows:
+                            sample_data[report_id] = rows
+                            sample_stats[report_id] = calculate_stats(rows, report_id)
 
     if not sample_data:
         print("\n [!] ERROR: No valid sample profiles were identified.")

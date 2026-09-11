@@ -6,7 +6,7 @@ hide:
 
 # GMS nallo Methylation Dashboard
 
-[![Version](https://img.shields.io/badge/version-0.2.3-blue.svg)](https://github.com/GMS-CGL/gms-nallo-methylation-dashboard)
+[![Version](https://img.shields.io/badge/version-0.3.0-blue.svg)](https://github.com/GMS-CGL/gms-nallo-methylation-dashboard)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
 <div class="grid-container" markdown="1">
@@ -85,8 +85,8 @@ The script automatically scans `methylation/` folder, `tables/`, and the results
 ## 📝 Metadata
 - **Author**: [Jyotirmoy Das](https://github.com/JD2112)
 - **Organization**: Bioinformatics Core Facility, Linköping University | Clinical Genomics Linköping (CGLi)
-- **Last Updated**: 2026-05-07
-- **Version**: v0.2.3
+- **Last Updated**: 2026-09-11
+- **Version**: v0.3.0
 
 ## 🔗 Quick Links
 - [Source Code](https://github.com/GMS-CGL/gms-nallo-methylation-dashboard)

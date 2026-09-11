@@ -5,8 +5,8 @@ authors:
     given-names: "Jyotirmoy"
     orcid: https://orcid.org/0000-0002-5649-4658
 title: "gms-nallo-methylation-dashboard"
-version: 0.2.3
+version: 0.3.0
 identifiers:
   - type: doi
     value: 00.0000/zenodo.0000000
-date-released: "2026-05-07"
+date-released: "2026-09-11"

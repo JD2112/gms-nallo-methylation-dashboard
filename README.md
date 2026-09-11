@@ -1,6 +1,6 @@
 # GMS nallo Methylation Dashboard
 
-[![Version](https://img.shields.io/badge/version-0.2.3-blue.svg)](https://github.com/GMS-CGL/gms-nallo-methylation-dashboard)
+[![Version](https://img.shields.io/badge/version-0.3.0-blue.svg)](https://github.com/GMS-CGL/gms-nallo-methylation-dashboard)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
 A premium, web-based visualization dashboard for clinical methylation analysis, specifically designed for the **GMS nallo** pipeline. It provides an interactive interface to review phased methylation data, quality control metrics, and external genomic context (gnomAD/NCBI).

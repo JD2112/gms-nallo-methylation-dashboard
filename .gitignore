@@ -11,3 +11,5 @@ scratch/
 doc/
 notebooks/
 logs/
+site/
+*.code-workspace
